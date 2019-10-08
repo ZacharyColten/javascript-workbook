@@ -26,12 +26,11 @@ function movePiece(startStack, endStack) {
 
 function isLegal(startStack, endStack) {
   // Your code here
-   let startStackNumber = (stacks[startStack][stacks[startStack].length - 1])
-   let endStackNumber = (stacks[endStack][stacks[endStack].length - 1])
-  if ((startStackNumber < endStackNumber)
+  let startStackNumber = (stacks[startStack][stacks[startStack].length - 1])
+  let endStackNumber = (stacks[endStack][stacks[endStack].length - 1])
+  if (((startStackNumber < endStackNumber) || (stacks[endStack] == ""))
     && (((startStack === 'a') && (endStack === 'b' || endStack === 'c')) || ((startStack === 'b') && (endStack === 'a' || endStack === 'c')) || ((startStack === 'c') && (endStack === 'a' || endStack === 'b')))
-    && (stacks[startStack] !== ""))
-     {
+    && (typeof (stacks[startStack][stacks[startStack].length - 1]) !== "undefined")) {
     console.log('isLegal True')
     return true;
   }
