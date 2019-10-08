@@ -1,4 +1,23 @@
-'use strict';
+ Code Plan:
+ Assign object to variable stacks that contains 2 empty arrays and 1 array with the four different sized "pieces".
+ Create function to print the stacks in the interface.
+ Create function with two paramaters that moves the last item from an array in one property to another array in
+ a different property in the object stacks.
+ Create a function which spits out a true boolean if the user action is legal or a false boolean otherwise.
+ Grab last number in the first array chosen by user and store it in starStackNumber.
+ Grab last number in the second array chosen by user and store it in endAtackNumber.
+ Create rules for a legal play that must be true for this function to output a true boolean.
+ Rule 1. First value called user must be less than second value called by user in the interface, or the second value chosen by user must be an empty string.
+ **When the user selects an empty string value for the second input it will be undefined. An undefined value cannot be compared to another number,
+ so therefore we add || (stacks[endStack] == "") to add another qualifying condition for this rule when the second value chosen by user is an empty string. 
+ Rule 2. Limits input value choices for the user, and makes it illegal to enter the same value into both inputs in the interface.
+ Rule 3. This will prevent the user from adding an empty array space to another array.
+ Create a function that checks if the user won.
+ Create a function that Checks if the move is legal, and runs the movePiece function if it is. Also Checks if user won the game and outputs a messege if they did.
+ Script begin.
+
+ --------------------------------------------------------------
+ 'use strict';
 
 const assert = require('assert');
 const readline = require('readline');
@@ -126,3 +145,5 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
+------------------------------------------------------------------
+Script End.
