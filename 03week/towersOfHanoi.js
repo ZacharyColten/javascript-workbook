@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 });
 
 let stacks = {
-  a: [4, 3, 2, 1],
+  a: [4,3,2,1],
   b: [],
   c: []
 };
@@ -19,23 +19,57 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
+function movePiece(startStack, endStack) {
   // Your code here
-
+  return stacks[endStack].push(stacks[startStack].pop());
 }
 
-function isLegal() {
+function isLegal(startStack, endStack) {
   // Your code here
-
+   let startStackNumber = (stacks[startStack][stacks[startStack].length - 1])
+   let endStackNumber = (stacks[endStack][stacks[endStack].length - 1])
+  if ((startStackNumber < endStackNumber)
+    && (((startStack === 'a') && (endStack === 'b' || endStack === 'c')) || ((startStack === 'b') && (endStack === 'a' || endStack === 'c')) || ((startStack === 'c') && (endStack === 'a' || endStack === 'b')))
+    && (stacks[startStack] !== ""))
+     {
+    console.log('isLegal True')
+    return true;
+  }
+  {
+    return false;
+  }
 }
+
+
+
+
+
+
+
+
 
 function checkForWin() {
   // Your code here
+  if (stacks.c.length === 4) {
+    return true;
+  } else {
+    return false;
 
+  }
 }
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
+  if (isLegal(startStack, endStack)) {
+
+    movePiece(startStack, endStack)
+
+  } else {
+    console.log("Illegal move");
+
+  } if (checkForWin()) {
+    console.log('winner winner chicken dinner')
+  }
 
 }
 
