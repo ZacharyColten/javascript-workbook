@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .row {
+      display: flex;
+    }
+
+    .cell {
+      height: 200px;
+      width: 200px;
+      background-color: aliceblue;
+      border: 1px solid black;
+      font-size: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="row">
+    <div class="cell" data-cell="0"></div>
+    <div class="cell" data-cell="1"></div>
+    <div class="cell" data-cell="2"></div>
+  </div>
+  <div class="row">
+    <div class="cell" data-cell="3"></div>
+    <div class="cell" data-cell="4"></div>
+    <div class="cell" data-cell="5"></div>
+  </div>
+  <div class="row">
+    <div class="cell" data-cell="6"></div>
+    <div class="cell" data-cell="7"></div>
+    <div class="cell" data-cell="8"></div>
+  </div>
+
+  <script>
+    var player = 'X';
+    [...document.querySelectorAll('.cell')].forEach(function (cell) {
+      cell.addEventListener('click', function () {
+        if (this.innerText === '') {
+          this.innerText = player;
+          checkForWin(player)
+          if (player === 'X') {
+            player = 'O';
+          } else {
+            player = 'X';
+          }
+        }
+      })
+    })
+
+    function checkForWin(playerTurn) {
+      if (
+        (document.querySelector('[data-cell="0"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="1"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="2"]').innerText == playerTurn
+        ) || (
+          document.querySelector('[data-cell="3"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="4"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="5"]').innerText == playerTurn
+        ) || (
+          document.querySelector('[data-cell="6"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="7"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="8"]').innerText == playerTurn
+        ) || (
+          document.querySelector('[data-cell="0"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="3"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="6"]').innerText == playerTurn
+        ) || (
+          document.querySelector('[data-cell="1"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="4"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="7"]').innerText == playerTurn
+        ) || (
+          document.querySelector('[data-cell="2"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="5"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="8"]').innerText == playerTurn
+        ) || (
+          document.querySelector('[data-cell="0"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="4"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="8"]').innerText == playerTurn
+        ) || (
+          document.querySelector('[data-cell="2"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="4"]').innerText == playerTurn &&
+          document.querySelector('[data-cell="6"]').innerText == playerTurn
+        )
+      ) {
+        alert(playerTurn + ' Wins!')
+      }
+    }
+  </script>
+</body>
+
+</html>

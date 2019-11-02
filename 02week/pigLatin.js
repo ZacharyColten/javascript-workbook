@@ -8,10 +8,17 @@ const rl = readline.createInterface({
 });
 
 
-function pigLatin(word) {
+function pigLatin(str) {
 
   // Your code here
+  var str = str.toLowerCase()
+  var vowels = ["a","e","i","o","u"]
+  var firstPostion = str.indexOf(vowels)
 
+  if (firstPosition > 0) {
+    return str.slice(firstPostion) + str.slice(0, firstPostion) +"ay";
+  }
+  return str + "yay";
 }
 
 
